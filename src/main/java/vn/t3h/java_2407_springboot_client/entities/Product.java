@@ -2,6 +2,7 @@ package vn.t3h.java_2407_springboot_client.entities;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import org.springframework.format.annotation.NumberFormat;
 
 import java.time.LocalDateTime;
 @Entity

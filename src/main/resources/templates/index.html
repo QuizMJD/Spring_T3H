@@ -46,9 +46,10 @@
                         <img class="img-fluid" th:src="@{'/img/' + ${pr.imageName}}">
                     </a>
                     <figcaption class="info-wrap mt-2">
-                        <a href="#" class="title" th:text="${pr.name}"></a>
+                        <a href="#" class="title" th:text="${pr.name}" th:href="@{/product/{id}(id=${pr.id})}" ></a>
 <!--                        <div class="price mt-1 fw-bold" th:text="${pr.price}"></div>-->
-                        <div class="price mt-1 fw-bold" th:text="  ${pr.price}+'₫'"></div>
+                        <div class="price mt-1 fw-bold" th:text="  ${pr.price}+' VNĐ'"></div>
+
 
                     </figcaption>
                 </div>
@@ -57,13 +58,6 @@
         </div> <!-- row.// -->
     </div> <!-- container.// -->
 </section> <!-- section-content.// -->
-
-
-
-
-
-
-
 
 
 
