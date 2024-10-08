@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head th:replace="/common/fragment :: head('Trang chủ')">
+<head th:replace="~{/common/fragment :: head('Trang chủ')}">
 </head>
 <body>
-<header th:replace="/common/fragment :: header()"></header>
-<nav th:replace="/common/fragment :: nav()"></nav>
+<header th:replace="~{/common/fragment :: header()}"></header>
+<nav th:replace="~{/common/fragment :: nav()}"></nav>
 
 
 
@@ -40,15 +40,15 @@
         </header> <!-- section-heading.// -->
         <div class="row item-grid">
             <div class="col-lg-3 col-md-6 " th:each="pr : ${products} ">
-                <div class="card p-3 mb-4">
+                <div class="card p-3 mb-4 ">
 
-                    <a th:href="@{/product/{id}(id=${pr.id})}"  class="img-wrap text-center">
+                    <a th:href="@{/product/{id}(id=${pr.id})}"  class="img-wrap text-center ">
                         <img class="img-fluid" th:src="@{'/img/' + ${pr.imageName}}">
                     </a>
-                    <figcaption class="info-wrap mt-2">
+                    <figcaption class="info-wrap mt-2 ">
                         <a href="#" class="title" th:text="${pr.name}" th:href="@{/product/{id}(id=${pr.id})}" ></a>
 <!--                        <div class="price mt-1 fw-bold" th:text="${pr.price}"></div>-->
-                        <div class="price mt-1 fw-bold" th:text="  ${pr.price}+' VNĐ'"></div>
+                        <div class="price mt-1 fw-bold " th:text="  ${pr.price}+' VNĐ'"></div>
 
 
                     </figcaption>
@@ -61,6 +61,6 @@
 
 
 
-<footer th:replace="/common/fragment :: footer()"></footer>
+<footer th:replace="~{/common/fragment :: footer()}"></footer>
 </body>
 </html>

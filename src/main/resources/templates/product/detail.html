@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head th:replace="/common/fragment :: head('Trang chủ')">
+<head th:replace="~{/common/fragment :: head('Trang chủ')}">
 
 </head>
 <body>
-<header th:replace="/common/fragment :: header()"></header>
-<nav th:replace="/common/fragment :: nav()"></nav>
+
+<header th:replace="~{/common/fragment :: header()}"></header>
+<nav th:replace="~{/common/fragment :: nav()}"></nav>
 
 
 
@@ -106,7 +107,17 @@
 
                 <div>
                     <a href="#" class="btn btn-primary">Mua ngay</a>
+<!--                    <form th:action="@{/buy-now}" method="post" class="me-2">-->
+<!--                        <input type="hidden" name="productId" th:value="${product.id}" />-->
+<!--                        <button type="submit" class="btn btn-primary">Mua ngay</button>-->
+<!--                    </form>-->
                     <a href="#" class="btn btn-light ms-2">Thêm vào giỏ hàng</a>
+<!--                    <form th:action="@{/cart/add}" method="post">-->
+<!--                        <input type="hidden" name="productId" th:value="${product.id}" />-->
+<!--                        <input type="hidden" name="quantity" value="1" />-->
+<!--                        <button type="submit" class="btn btn-light ms-2" >Thêm vào giỏ hàng</button>-->
+<!--                    </form>-->
+
                 </div>
 
             </main>
@@ -264,7 +275,7 @@
 </section><!-- section-content.// -->
 
 
-<footer th:replace="/common/fragment :: footer()"></footer>
+<footer th:replace="~{/common/fragment :: footer()}"></footer>
 
 </body>
 

@@ -33,8 +33,7 @@ public class HomeControler {
     }
     @GetMapping("/product/{id}")
     public String showDetailProduct(Model model, @PathVariable("id") Long id) {
-        Product pr=this.productService.getProductDetail(id);
-        model.addAttribute("product",pr);
+        model.addAttribute("product",productService.getProductDetail(id));
         return "product/detail";
     }
 }
