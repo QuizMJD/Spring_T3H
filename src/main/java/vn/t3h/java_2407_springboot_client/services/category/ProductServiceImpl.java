@@ -1,6 +1,8 @@
 package vn.t3h.java_2407_springboot_client.services.category;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import vn.t3h.java_2407_springboot_client.common.Response;
 import vn.t3h.java_2407_springboot_client.entities.Product;
@@ -12,9 +14,14 @@ public class ProductServiceImpl implements ProductService{
     @Autowired
     ProductRepository productRepository;
 
+//    @Override
+//    public List<Product> getAllProduct() {
+//        return productRepository.findAll();
+//    }
+
     @Override
-    public List<Product> getAllProduct() {
-        return productRepository.findAll();
+    public Page<Product> getAllProduct(Pageable page) {
+        return productRepository.findAll(page);
     }
 
     @Override
@@ -29,4 +36,6 @@ public class ProductServiceImpl implements ProductService{
         response = new Response(1, "SUCCESS", product);
         return response;
     }
+
+
 }
