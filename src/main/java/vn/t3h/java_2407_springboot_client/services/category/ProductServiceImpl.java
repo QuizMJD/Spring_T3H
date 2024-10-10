@@ -3,9 +3,11 @@ package vn.t3h.java_2407_springboot_client.services.category;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 import vn.t3h.java_2407_springboot_client.common.Response;
 import vn.t3h.java_2407_springboot_client.entities.Product;
+import vn.t3h.java_2407_springboot_client.entities.Product_;
 import vn.t3h.java_2407_springboot_client.repositories.ProductRepository;
 
 import java.util.List;
@@ -35,6 +37,17 @@ public class ProductServiceImpl implements ProductService{
         productRepository.save(product);
         response = new Response(1, "SUCCESS", product);
         return response;
+    }
+
+    @Override
+    public Page<Product> searchProductWithSpec(Pageable page, String name) {
+        return this.productRepository.findAll(this.nameLike(name),page);
+    }
+
+    @Override
+    public Specification<Product> nameLike(String name) {
+        return (root, query, criteriaBuilder)
+                -> criteriaBuilder.like(root.get(Product_.NAME), "%"+name+"%");
     }
 
 

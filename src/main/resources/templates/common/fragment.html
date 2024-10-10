@@ -26,14 +26,24 @@
                     </a>
                 </div> <!-- col.// -->
                 <div class="col-lg-4 col-xl-5">
-                    <form action="#" class="search">
+<!--                    <form action="#" class="search">-->
+<!--                        <div class="input-group w-100">-->
+<!--                            <input type="text" class="form-control" placeholder="Nhập từ khóa cần tìm ...">-->
+<!--                            <button class="btn btn-primary" type="button">-->
+<!--                                <i class="bi bi-search"></i>-->
+<!--                            </button>-->
+<!--                        </div>-->
+<!--                    </form>-->
+                    <form th:action="@{/}" method="get" class="search">
                         <div class="input-group w-100">
-                            <input type="text" class="form-control" placeholder="Nhập từ khóa cần tìm ...">
-                            <button class="btn btn-primary" type="button">
+                            <input type="text" class="form-control" name="name" placeholder="Nhập từ khóa cần tìm ..." aria-label="Search">
+                            <button class="btn btn-primary" type="submit">
                                 <i class="bi bi-search"></i>
                             </button>
                         </div>
                     </form>
+
+
                 </div> <!-- col.// -->
                 <div class="col-lg-5 col-xl-4">
                     <ul class="nav col-12 col-lg-auto my-2 my-lg-0 justify-content-center justify-content-lg-end text-small">

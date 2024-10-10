@@ -32,7 +32,9 @@ public class HomeControler {
 
     @GetMapping("/")
 
-    public String homPage(Model model, @RequestParam(required = false) String message,@RequestParam("page")Optional<String> pageOptional) {
+    public String homPage(Model model, @RequestParam(required = false) String message,
+                          @RequestParam("page")Optional<String> pageOptional,
+                          @RequestParam("name") Optional<String> nameOptional) {
         int page = 1;
         try {
             if (pageOptional.isPresent()) {
@@ -43,14 +45,17 @@ public class HomeControler {
             }
         }catch(Exception e){
         }
+//        String name=nameOptional.get();
+        String name = nameOptional.orElse(""); // Nếu không có giá trị, đặt tên mặc định là chuỗi rỗng
         Pageable pageable= PageRequest.of(page -1,12);
-        Page<Product> products=this.productService.getAllProduct(pageable);
+        Page<Product> products=this.productService.searchProductWithSpec(pageable,name);
         List<Product> productList=products.getContent();
         model.addAttribute("message", message);
         model.addAttribute("categories", categoryService.getAllCategory());
         model.addAttribute("products",productList);
         model.addAttribute("currentPage", page);
         model.addAttribute("totalPages",products.getTotalPages());
+//        model.addAttribute("searchTerm", name);
         return "index";
     }
 
