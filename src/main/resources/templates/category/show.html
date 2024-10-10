@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head th:replace="~{/common/fragment :: head('Trang chủ')}">
+</head>
+<body>
+<header th:replace="~{/common/fragment :: header()}"></header>
+<nav th:replace="~{/common/fragment :: nav()}"></nav>
+<section class="section-pagetop bg-light">
+    <div class="container">
+        <h2 class="title-page">Sách giáo khoa</h2>
+        <nav>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item" aria-current="page"><a href="#">Trang chủ</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Sách giáo khoa</li>
+            </ol>
+        </nav>
+    </div> <!-- container.// -->
+</section> <!-- section-pagetop.// -->
+
+<section class="section-content padding-y">
+    <div class="container">
+        <div class="row">
+            <aside class="col-md-4 col-lg-3 mb-md-0 mb-3">
+                <div class="card">
+                    <article class="filter-group">
+                        <header class="card-header my-1">
+                            <a data-bs-toggle="collapse" href="#collapse_1" aria-expanded="true" aria-controls="collapse_1">
+                                <i class="float-end bi bi-chevron-down"></i>
+                                <h6 class="title fw-bold">Nhà xuất bản</h6>
+                            </a>
+                        </header>
+                        <div class="filter-content collapse show" id="collapse_1">
+                            <div class="card-body pt-0">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="" id="checkbox_brand_1" checked>
+                                    <label class="form-check-label" for="checkbox_brand_1">
+                                        NXB Giáo dục
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="" id="checkbox_brand_2" checked>
+                                    <label class="form-check-label" for="checkbox_brand_2">
+                                        NXB Đại học Sư phạm Hà Nội
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="" id="checkbox_brand_3" checked>
+                                    <label class="form-check-label" for="checkbox_brand_3">
+                                        NXB Đại học Sư phạm TPHCM
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="" id="checkbox_brand_4" checked>
+                                    <label class="form-check-label" for="checkbox_brand_4">
+                                        NXB Đại học Quốc gia Hà Nội
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="" id="checkbox_brand_5" checked>
+                                    <label class="form-check-label" for="checkbox_brand_5">
+                                        NXB Đại học Huế
+                                    </label>
+                                </div>
+                            </div> <!-- card-body.// -->
+                        </div>
+                    </article>
+                    <article class="filter-group">
+                        <header class="card-header my-1">
+                            <a data-bs-toggle="collapse" href="#collapse_2" aria-expanded="true" aria-controls="collapse_2">
+                                <i class="float-end bi bi-chevron-down"></i>
+                                <h6 class="title fw-bold">Giá bán</h6>
+                            </a>
+                        </header>
+                        <div class="filter-content collapse show" id="collapse_2">
+                            <div class="card-body pt-0">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="" id="checkbox_price_1" checked>
+                                    <label class="form-check-label" for="checkbox_price_1">
+                                        Dưới 20.000₫
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="" id="checkbox_price_2" checked>
+                                    <label class="form-check-label" for="checkbox_price_2">
+                                        Từ 20.000₫ đến 100.000₫
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="" id="checkbox_price_3" checked>
+                                    <label class="form-check-label" for="checkbox_price_3">
+                                        Trên 100.000₫
+                                    </label>
+                                </div>
+                            </div> <!-- card-body.// -->
+                        </div>
+                    </article>
+                </div> <!-- card.// -->
+            </aside> <!-- col.// -->
+
+            <main class="col-md-8 col-lg-9">
+
+                <header class="border-bottom mb-4 pb-3">
+                    <div class="form-inline d-flex justify-content-between align-items-center">
+                        <span>30 sản phẩm</span>
+                        <div>
+                            <select class="form-select">
+                                <option>Bán chạy nhất</option>
+                                <option>Mới nhất</option>
+                                <option>Đánh giá cao nhất</option>
+                                <option>Giá thấp nhất</option>
+                            </select>
+                        </div>
+                    </div>
+                </header> <!-- sect-heading -->
+
+                <div class="row item-grid">
+                    <div class="col-lg-3 col-md-6 " th:each="pr : ${products} ">
+                        <div class="card p-3 mb-4 ">
+
+                            <a th:href="@{/product/{id}(id=${pr.id})}"  class="img-wrap text-center ">
+                                <img class="img-fluid" th:src="@{'/img/' + ${pr.imageName}}">
+                            </a>
+                            <figcaption class="info-wrap mt-2 ">
+                                <a href="#" class="title" th:text="${pr.name}" th:href="@{/product/{id}(id=${pr.id})}" ></a>
+                                <!--                        <div class="price mt-1 fw-bold" th:text="${pr.price}"></div>-->
+                                <div class="price mt-1 fw-bold " th:text="  ${pr.price}+' VNĐ'"></div>
+
+
+                            </figcaption>
+                        </div>
+
+                    </div> <!-- col.// -->
+                    <!--            <nav aria-label="Page navigation example">-->
+                    <!--                <ul class="pagination justify-content-center">-->
+                    <!--                    <li class="page-item">-->
+                    <!--                        <a class="${1 eq currentPage ? 'disabled page-link' : 'page-link'}"-->
+                    <!--                           href="/admin/product?page=${currentPage-1}" aria-label="Previous">-->
+                    <!--                            <span aria-hidden="true">&laquo;</span>-->
+                    <!--                        </a>-->
+                    <!--                    </li>-->
+                    <!--                    <c:forEach begin="0" end="${totalPages-1}" varStatus="loop">-->
+                    <!--                        <li class=" page-item">-->
+                    <!--                            <a class="${(loop.index+1) eq currentPage ? 'active page-link' : 'page-link'}" href="/admin/product?page=${loop.index+1}">-->
+                    <!--                                ${loop.index+1}-->
+                    <!--                            </a>-->
+                    <!--                        </li>-->
+                    <!--                    </c:forEach>-->
+                    <!--                    <li class="page-item">-->
+                    <!--                        <a class="${totalPages eq currentPage ? 'disabled page-link' : 'page-link'}" href="/admin/product?page=${currentPage+1}" aria-label="Next">-->
+                    <!--                            <span aria-hidden="true">&raquo;</span>-->
+                    <!--                        </a>-->
+                    <!--                    </li>-->
+                    <!--                </ul>-->
+                    <!--            </nav>-->
+
+
+
+                </div> <!-- row.// -->
+
+                <nav aria-label="Page navigation example">
+                    <ul class="pagination justify-content-center">
+                        <!-- Nút "Previous" -->
+                        <li th:classappend="${currentPage == 1} ? 'disabled' : ''" class="page-item">
+                            <a class="page-link" th:href="@{/category(page=${currentPage - 1})}" aria-label="Previous">
+                                <span aria-hidden="true">&laquo;</span>
+                            </a>
+                        </li>
+
+                        <!-- Duyệt qua các trang -->
+                        <li th:each="pageNum : ${#numbers.sequence(1, totalPages)}"
+                            th:classappend="${pageNum == currentPage} ? 'active' : ''" class="page-item">
+                            <a class="page-link" th:href="@{/category(page=${pageNum})}" th:text="${pageNum}"></a>
+                        </li>
+
+                        <!-- Nút "Next" -->
+                        <li th:classappend="${currentPage == totalPages} ? 'disabled' : ''" class="page-item">
+                            <a class="page-link" th:href="@{/category(page=${currentPage + 1})}" aria-label="Next">
+                                <span aria-hidden="true">&raquo;</span>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+
+            </main> <!-- col.// -->
+        </div> <!-- row.// -->
+    </div> <!-- container.//  -->
+</section> <!-- section-content.// -->
+
+<footer th:replace="~{/common/fragment :: footer()}"></footer>
+
+</body>
+
+</html>

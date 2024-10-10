@@ -1,4 +1,4 @@
-package vn.t3h.java_2407_springboot_client.services.category;
+package vn.t3h.java_2407_springboot_client.services.product;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -10,7 +10,6 @@ import vn.t3h.java_2407_springboot_client.entities.Product;
 import vn.t3h.java_2407_springboot_client.entities.Product_;
 import vn.t3h.java_2407_springboot_client.repositories.ProductRepository;
 
-import java.util.List;
 @Service
 public class ProductServiceImpl implements ProductService{
     @Autowired

@@ -1,13 +1,10 @@
-package vn.t3h.java_2407_springboot_client.services.category;
+package vn.t3h.java_2407_springboot_client.services.product;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.domain.Specification;
 import vn.t3h.java_2407_springboot_client.common.Response;
-import vn.t3h.java_2407_springboot_client.entities.Category;
 import vn.t3h.java_2407_springboot_client.entities.Product;
-
-import java.util.List;
 
 public interface ProductService {
     Page<Product> getAllProduct(Pageable page);
